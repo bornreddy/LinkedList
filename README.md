@@ -1,0 +1,1 @@
+This is the first in a series of practice exercises to assist my understanding of data structures. Here I have coded a doubly linked list. 
