@@ -8,17 +8,20 @@
 #include "ListItr.h"
 using namespace std;
 
-
+//default contructor
 List::List() {  
   head = new ListNode;
   tail = new ListNode;
+  //  head->value = 0;
   head->next = tail;
   head->previous = NULL;
+  //tail-> value = 0;
   tail->next = NULL;
   tail->previous = head;
   count = 0;
 }
 
+//copy constructor
 List::List(const List& source) {     //Copy Constructor
   head=new ListNode;
   tail=new ListNode;
@@ -35,12 +38,14 @@ List::List(const List& source) {     //Copy Constructor
  
 List::~List()
 {
+  //delete all ListNode references
+  //delete head and tail nodes
   makeEmpty();
   delete head;
   delete tail;
 }
 
-
+//Equals operator
 List& List::operator=(const List& source){ //Equals operator
   if (this == &source)
     return *this;
@@ -56,6 +61,8 @@ List& List::operator=(const List& source){ //Equals operator
 }
 
 bool List::isEmpty() const {
+  //if the tail and head point to each other, then the list is empty
+  //other way to do this (better maybe?) if count == 0
   if (head->next == tail && tail->previous == head) {
   return true;
   }
@@ -101,6 +108,7 @@ void List::insertBefore( int x, ListItr position ) {
 }
 
 void List::insertAtTail( int x ) {
+  //create iterator at the tail node, and insert before there
   ListItr iter(tail);
   insertBefore(x, iter);
 }
